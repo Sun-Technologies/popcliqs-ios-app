@@ -1,0 +1,26 @@
+//
+// Prefix header for all source files of the 'Popcliqs' target in the 'Popcliqs' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "PopcliqsAPI.h"
+
+    #define DEBUG_3
+    #ifdef DEBUG_3
+    #   define SLog(s, ...) NSLog( @"<%p %@:(%d)> %@", self, \
+    [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, \
+    [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+    #else
+    #   define SLog(s, ...)
+    #endif
+
+#endif

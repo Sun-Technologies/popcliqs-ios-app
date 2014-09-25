@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="iOS 6.0">
+    <entity name="CDEvent" representedClassName="CDEvent" syncable="YES">
+        <attribute name="bUserCreated" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="doubleLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="doubleLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="objCheckInStartTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="objEndDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="objStartDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="strAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strCity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strLocation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strOwnerIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strPostalCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strTypeIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strVenue" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CDEvent" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>

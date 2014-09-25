@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>244069B2-2DCB-47B6-B28F-01702FC143D8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Popcliqs</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E1398AF8-8199-40EF-BC0A-615EB23B455C</key>
+		<string>https://192.168.0.45/svn/popcliqs</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>trunk/Popcliqs.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E1398AF8-8199-40EF-BC0A-615EB23B455C</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>E1398AF8-8199-40EF-BC0A-615EB23B455C</key>
+		<string>https://192.168.0.45/svn/popcliqs</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://192.168.0.45/svn/popcliqs/trunk/Popcliqs.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E1398AF8-8199-40EF-BC0A-615EB23B455C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E1398AF8-8199-40EF-BC0A-615EB23B455C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>popcliqs</string>
+		</dict>
+	</array>
+</dict>
+</plist>
