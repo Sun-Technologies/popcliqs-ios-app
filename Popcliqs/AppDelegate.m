@@ -10,6 +10,7 @@
 #import "CoreDataStack.h"
 #import "PopcliqsAPI.h"
 #import "HomeViewController.h"
+#import <Pushbots/Pushbots.h>
 
 @interface  AppDelegate ()
 
@@ -27,10 +28,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
-    
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"Nav-Bar-Background"] forBarMetrics:UIBarMetricsDefault];
 //    [[UIView appearance] setBackgroundColor:[UIColor colorWithRed:0.92f green:0.94f blue:0.98f alpha:1.0f]];
+    
+    NSDictionary * userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if(userInfo) {
+        // Notification Message
+        NSString* notificationMsg = [userInfo valueForKey:@"message"];
+        // Custom Field
+        NSString* title = [userInfo valueForKey:@"title"];
+        NSLog(@"Notification Msg is %@ and Custom field title = %@", notificationMsg , title);
+    }
+    
+    [Pushbots getInstance];
     
     return YES;
 }
@@ -513,6 +523,23 @@
     }
     
     return lbEventDataHasOnlyStrings;
+}
+
+-(void)onReceivePushNotification:(NSDictionary *) pushDict andPayload:(NSDictionary *)payload {
+    [payload valueForKey:@"title"];
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"New Alert !" message:[pushDict valueForKey:@"alert"] delegate:self cancelButtonTitle:@"Thanks !" otherButtonTitles: @"Open",nil];
+    [message show];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Open"]) {
+        [[Pushbots getInstance] OpenedNotification];
+        // set Badge to 0
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+        // reset badge on the server
+        [[Pushbots getInstance] resetBadgeCount];
+    }
 }
 
 @end
