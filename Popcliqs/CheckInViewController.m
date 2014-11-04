@@ -21,8 +21,11 @@
 @property (nonatomic, strong) NSMutableData* objReceivedData;
 @property (nonatomic, strong) CLLocationManager* objLocationManager;
 @property (nonatomic, strong) CLLocation*        objCurrentLocation;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorObject;
+
 
 @property (nonatomic, strong) UILabel* objNoEventsLabel;
+
 
 @end
 
@@ -30,6 +33,7 @@
 
 - (void)didBecomeActive:(NSNotification*)lobjNotification
 {
+    
     [self fetchDataFromInternet];
 }
 
@@ -52,6 +56,12 @@
 
 - (void)fetchDataFromInternet
 {
+    self.activityIndicatorObject = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityIndicatorObject.center = self.view.center;
+
+    [self.view addSubview:self.activityIndicatorObject];
+    [self.activityIndicatorObject startAnimating];
+    
     self.objReceivedData = [NSMutableData data];
     NSURL* lobjURL = [NSURL URLWithString:[PopcliqsAPI checkInEventsURL]];
     NSURLRequest* lobjRequest = [NSURLRequest requestWithURL:lobjURL];
@@ -115,7 +125,9 @@
     
     [self startLocationServices];
     
+
     [self fetchDataFromInternet];
+    
 }
 
 - (void)viewDidLoad
@@ -394,6 +406,9 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+    
+    
+    [self.activityIndicatorObject stopAnimating];
     if (self.objReceivedData)
     {
         NSError* lobjError = nil;
@@ -495,6 +510,18 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     SLog(@"connection:didFailWithError:%@", [error description]);
+    
+    [self.activityIndicatorObject stopAnimating];
+    
+    self.objNoEventsLabel = [[UILabel alloc]
+                             initWithFrame:CGRectMake(0, 0,
+                                                      self.view.bounds.size.width,
+                                                      self.view.bounds.size.height)];
+    
+    self.objNoEventsLabel.text = @"Error connecting to Popcliqs Server";
+    self.objNoEventsLabel.textAlignment = NSTextAlignmentCenter;
+    self.objNoEventsLabel.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.objNoEventsLabel];
 }
 
 - (BOOL)eventDataHasOnlyStrings:(NSDictionary*)ldictEvents

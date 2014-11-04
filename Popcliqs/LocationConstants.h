@@ -8,5 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-#define GEO_ALERT_TRIGGER_RADIUS              (804.67)
+#define GEO_ALERT_TRIGGER_RADIUS              (3804.67)
 #define GEO_ALERT_TRIGGER_INCREASED_RADIUS    (GEO_ALERT_TRIGGER_RADIUS + 100)
