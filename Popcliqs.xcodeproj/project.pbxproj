@@ -35,6 +35,11 @@
 		0487764F17C21EC1009D09BF /* TutorialViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0487764E17C21EC1009D09BF /* TutorialViews.xib */; };
 		04A3EA3619614947002CE7F7 /* UILabelInset.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A3EA3519614947002CE7F7 /* UILabelInset.m */; };
 		04FD90FB184F36B000EA3342 /* TutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FD90FA184F36B000EA3342 /* TutorialView.m */; };
+		1A564F9819DAD2640010777A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A564F9719DAD2640010777A /* SystemConfiguration.framework */; };
+		1A564F9A19DAD2770010777A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A564F9919DAD2770010777A /* MobileCoreServices.framework */; };
+		1A564F9C19DAD2800010777A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A564F9B19DAD2800010777A /* CoreTelephony.framework */; };
+		1A564F9E19DAD2940010777A /* Pushbots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A564F9D19DAD2940010777A /* Pushbots.framework */; };
+		1A564FA019DAD2BF0010777A /* Pushbots.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A564F9F19DAD2BF0010777A /* Pushbots.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +89,11 @@
 		04A3EA3519614947002CE7F7 /* UILabelInset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UILabelInset.m; sourceTree = "<group>"; };
 		04FD90F9184F36B000EA3342 /* TutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialView.h; sourceTree = "<group>"; };
 		04FD90FA184F36B000EA3342 /* TutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialView.m; sourceTree = "<group>"; };
+		1A564F9719DAD2640010777A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1A564F9919DAD2770010777A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		1A564F9B19DAD2800010777A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		1A564F9D19DAD2940010777A /* Pushbots.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pushbots.framework; sourceTree = "<group>"; };
+		1A564F9F19DAD2BF0010777A /* Pushbots.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pushbots.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +101,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A564F9C19DAD2800010777A /* CoreTelephony.framework in Frameworks */,
+				1A564F9A19DAD2770010777A /* MobileCoreServices.framework in Frameworks */,
+				1A564F9819DAD2640010777A /* SystemConfiguration.framework in Frameworks */,
 				04109B0F17F2F16200421E6F /* CoreLocation.framework in Frameworks */,
 				0415DA7217F0348D00DF9450 /* CoreData.framework in Frameworks */,
+				1A564F9E19DAD2940010777A /* Pushbots.framework in Frameworks */,
 				04251CCB17BF4B0F00507227 /* UIKit.framework in Frameworks */,
 				04251CCD17BF4B0F00507227 /* Foundation.framework in Frameworks */,
 				04251CCF17BF4B0F00507227 /* CoreGraphics.framework in Frameworks */,
@@ -202,6 +216,10 @@
 		04251CC917BF4B0F00507227 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A564F9D19DAD2940010777A /* Pushbots.framework */,
+				1A564F9B19DAD2800010777A /* CoreTelephony.framework */,
+				1A564F9919DAD2770010777A /* MobileCoreServices.framework */,
+				1A564F9719DAD2640010777A /* SystemConfiguration.framework */,
 				04109B0E17F2F16200421E6F /* CoreLocation.framework */,
 				0415DA7117F0348D00DF9450 /* CoreData.framework */,
 				04251CCA17BF4B0F00507227 /* UIKit.framework */,
@@ -245,6 +263,7 @@
 				04251CDC17BF4B0F00507227 /* Default.png */,
 				04251CDE17BF4B0F00507227 /* Default@2x.png */,
 				04251CE017BF4B0F00507227 /* Default-568h@2x.png */,
+				1A564F9F19DAD2BF0010777A /* Pushbots.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -285,10 +304,10 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = "PaniPuri Soft Limited";
+				ORGANIZATIONNAME = "Sun Technologies";
 				TargetAttributes = {
 					04251CC617BF4B0F00507227 = {
-						DevelopmentTeam = 2ZWNA6U687;
+						DevelopmentTeam = LJ44QB69J7;
 					};
 				};
 			};
@@ -314,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A564FA019DAD2BF0010777A /* Pushbots.plist in Resources */,
 				04251CD517BF4B0F00507227 /* InfoPlist.strings in Resources */,
 				04251CDD17BF4B0F00507227 /* Default.png in Resources */,
 				0400A83D1850623A004A13A3 /* Images.xcassets in Resources */,
@@ -433,12 +453,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tahir Imran (EH8Y5ZVPC2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tahir Imran (EH8Y5ZVPC2)";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Popcliqs/Popcliqs-Prefix.pch";
 				INFOPLIST_FILE = "Popcliqs/Popcliqs-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -450,12 +476,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tahir Imran (EH8Y5ZVPC2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tahir Imran (EH8Y5ZVPC2)";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Popcliqs/Popcliqs-Prefix.pch";
 				INFOPLIST_FILE = "Popcliqs/Popcliqs-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
