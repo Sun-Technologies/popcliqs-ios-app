@@ -601,6 +601,11 @@
             self.objLocationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
         }
         
+        if ([self.objLocationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+        {
+            [self.objLocationManager requestWhenInUseAuthorization];
+        }
+        
         [self.objLocationManager startUpdatingLocation];
         
         self.objCurrentLocation = nil;
