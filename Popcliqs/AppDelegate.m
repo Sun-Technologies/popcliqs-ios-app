@@ -530,6 +530,7 @@
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"New Alert !" message:[pushDict valueForKey:@"alert"] delegate:self cancelButtonTitle:@"Thanks !" otherButtonTitles: @"Open",nil];
     [message show];
 }
+
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
@@ -539,6 +540,11 @@
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
         // reset badge on the server
         [[Pushbots getInstance] resetBadgeCount];
+        
+        // Fetch data from events
+        if([PopcliqsAPI authKey]){
+            [self fetchDataFromInternet];
+        }
     }
 }
 
