@@ -74,6 +74,8 @@
     {
         [self fetchDataFromInternet];
     }
+    
+    [[[UIApplication sharedApplication] delegate].window setTintColor:[UIColor clearColor]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
