@@ -22,6 +22,7 @@
 @property (nonatomic, strong) CLLocationManager* objLocationManager;
 @property (nonatomic, strong) CLLocation*        objCurrentLocation;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorObject;
+@property (nonatomic, strong) UIAlertView *locationServiceErrorAlertView;
 
 
 @property (nonatomic, strong) UILabel* objNoEventsLabel;
@@ -601,9 +602,34 @@
             self.objLocationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
         }
         
-        if ([self.objLocationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+        CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+        
+        if ((status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusDenied) && self.locationServiceErrorAlertView == nil)
         {
-            [self.objLocationManager requestWhenInUseAuthorization];
+            NSString *header;
+            if(status == kCLAuthorizationStatusDenied)
+            {
+                header = @"Location service is disabled";
+            }
+            else
+            {
+                header = @"Location service in background is disabled";
+            }
+            
+            NSString *message = @"For background location turn on 'Always' in the Location Services Settings";
+            
+            self.locationServiceErrorAlertView = [[UIAlertView alloc] initWithTitle:header
+                                                                            message:message
+                                                                           delegate:self
+                                                                  cancelButtonTitle:@"Ok"
+                                                                  otherButtonTitles:nil, nil];
+            
+            [self.locationServiceErrorAlertView show];
+        }
+        
+        if ([self.objLocationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
+        {
+            [self.objLocationManager requestAlwaysAuthorization];
         }
         
         [self.objLocationManager startUpdatingLocation];
