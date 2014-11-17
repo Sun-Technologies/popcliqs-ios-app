@@ -153,7 +153,7 @@
         <!--Home-->
         <scene sceneID="2NH-c1-7B8">
             <objects>
-                <viewController id="USk-H9-f8F" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeView" id="USk-H9-f8F" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rZh-lJ-rWw"/>
                         <viewControllerLayoutGuide type="bottom" id="tkj-87-e4w"/>

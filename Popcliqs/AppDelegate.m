@@ -10,6 +10,7 @@
 #import "CoreDataStack.h"
 #import "PopcliqsAPI.h"
 #import "HomeViewController.h"
+#import "CheckInViewController.h"
 #import <Pushbots/Pushbots.h>
 
 @interface  AppDelegate ()
@@ -24,6 +25,9 @@
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
     SLog(@"Did Receive Local notification");
+    UIStoryboard *mainstoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    CheckInViewController* CheckinView = [mainstoryboard instantiateViewControllerWithIdentifier:@"CheckInViewController"];
+    [self.window.rootViewController presentViewController:CheckinView animated:YES completion:NULL];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -38,6 +42,12 @@
         // Custom Field
         NSString* title = [userInfo valueForKey:@"title"];
         NSLog(@"Notification Msg is %@ and Custom field title = %@", notificationMsg , title);
+        if(notificationMsg)
+        {
+            UIStoryboard *mainstoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+            HomeViewController* homeView = [mainstoryboard instantiateViewControllerWithIdentifier:@"HomeView"];
+            [self.window.rootViewController presentViewController:homeView animated:YES completion:NULL];
+        }
     }
     
     [Pushbots getInstance];
