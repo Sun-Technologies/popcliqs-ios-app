@@ -34,8 +34,17 @@
 {
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"Nav-Bar-Background"] forBarMetrics:UIBarMetricsDefault];
 //    [[UIView appearance] setBackgroundColor:[UIColor colorWithRed:0.92f green:0.94f blue:0.98f alpha:1.0f]];
-    
+    UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     NSDictionary * userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    
+    
+    if (localNotif)
+    {
+        UIStoryboard *mainstoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        CheckInViewController* CheckinView = [mainstoryboard instantiateViewControllerWithIdentifier:@"CheckInViewController"];
+        [self.window.rootViewController presentViewController:CheckinView animated:YES completion:NULL];
+    }
+    
     if(userInfo) {
         // Notification Message
         NSString* notificationMsg = [userInfo valueForKey:@"message"];
