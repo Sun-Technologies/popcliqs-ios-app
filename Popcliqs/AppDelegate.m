@@ -25,38 +25,50 @@
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
     SLog(@"Did Receive Local notification");
-    UIStoryboard *mainstoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    CheckInViewController* CheckinView = [mainstoryboard instantiateViewControllerWithIdentifier:@"CheckInViewController"];
-    [self.window.rootViewController presentViewController:CheckinView animated:YES completion:NULL];
+    
+    
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateActive) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reminder"
+                                                        message: notification.alertBody
+                                                       delegate:self cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
+//    UIStoryboard *mainstoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+//    CheckInViewController* CheckinView = [mainstoryboard instantiateViewControllerWithIdentifier:@"CheckInViewController"];
+//    [self.window.rootViewController presentViewController:CheckinView animated:YES completion:NULL];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"Nav-Bar-Background"] forBarMetrics:UIBarMetricsDefault];
 //    [[UIView appearance] setBackgroundColor:[UIColor colorWithRed:0.92f green:0.94f blue:0.98f alpha:1.0f]];
-    UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+//    UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+//    NSDictionary * userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+//    
+//    
+//    if (localNotif)
+//    {
+////        UIStoryboard *mainstoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+////        CheckInViewController* CheckinView = [mainstoryboard instantiateViewControllerWithIdentifier:@"CheckInViewController"];
+////        [self.window.rootViewController presentViewController:CheckinView animated:YES completion:NULL];
+//    }
+    
     NSDictionary * userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    
-    
-    if (localNotif)
-    {
-        UIStoryboard *mainstoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-        CheckInViewController* CheckinView = [mainstoryboard instantiateViewControllerWithIdentifier:@"CheckInViewController"];
-        [self.window.rootViewController presentViewController:CheckinView animated:YES completion:NULL];
-    }
-    
     if(userInfo) {
         // Notification Message
         NSString* notificationMsg = [userInfo valueForKey:@"message"];
         // Custom Field
         NSString* title = [userInfo valueForKey:@"title"];
         NSLog(@"Notification Msg is %@ and Custom field title = %@", notificationMsg , title);
-        if(notificationMsg)
-        {
-            UIStoryboard *mainstoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-            HomeViewController* homeView = [mainstoryboard instantiateViewControllerWithIdentifier:@"HomeView"];
-            [self.window.rootViewController presentViewController:homeView animated:YES completion:NULL];
-        }
+//        if(notificationMsg)
+//        {
+//            UIStoryboard *mainstoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+//            HomeViewController* homeView = [mainstoryboard instantiateViewControllerWithIdentifier:@"HomeView"];
+//            [self.window.rootViewController presentViewController:homeView animated:YES completion:NULL];
+//        }
     }
     
     [Pushbots getInstance];
@@ -94,7 +106,7 @@
         [self fetchDataFromInternet];
     }
     
-    [[[UIApplication sharedApplication] delegate].window setTintColor:[UIColor clearColor]];
+  //  [[[UIApplication sharedApplication] delegate].window setTintColor:[UIColor clearColor]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -150,11 +162,13 @@
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
-//    UIAlertView* lobjAlertView = [[UIAlertView alloc] initWithTitle:@"Did Enter Region"
-//                                                            message:@"Did Enter region"
-//                                                           delegate:nil cancelButtonTitle:@"Cancel"
-//                                                  otherButtonTitles:@"Ok", nil];
-//    [lobjAlertView show];
+    /*
+     UIAlertView* lobjAlertView = [[UIAlertView alloc] initWithTitle:@"Did Enter Region"
+                                                            message:@"Did Enter region"
+                                                           delegate:nil cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"Ok", nil];
+    [lobjAlertView show];
+    */
     
     NSPredicate* lobjPredicate = [NSPredicate predicateWithFormat:@"strIdentifier == %@", region.identifier];
     
@@ -180,9 +194,11 @@
                 {
                     // Present an alert to checkin
                     UILocalNotification* lobjLocalNotification = [[UILocalNotification alloc] init];
-                    lobjLocalNotification.fireDate = [NSDate date];
+                    lobjLocalNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:60];
                     lobjLocalNotification.alertBody = [NSString stringWithFormat:@"You are close to the event %@", lobjEvent.strTitle];
-                    [[UIApplication sharedApplication] presentLocalNotificationNow:lobjLocalNotification];
+                    lobjLocalNotification.soundName = UILocalNotificationDefaultSoundName;
+//                    lobjLocalNotification.applicationIconBadgeNumber = 1;
+                    [[UIApplication sharedApplication] scheduleLocalNotification:lobjLocalNotification];
                     
                     // Schedule a reminder 15 minutes prior to event
                     [lobjEvent scheduleReminderBeforeSeconds:EVENT_TIME_INTERVAL_FIFTEEN_MINUTES];
@@ -211,11 +227,13 @@
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
 {
-//    UIAlertView* lobjAlertView = [[UIAlertView alloc] initWithTitle:@"Did Exit Region"
-//                                                            message:@"Did Exit region"
-//                                                           delegate:nil cancelButtonTitle:@"Cancel"
-//                                                  otherButtonTitles:@"Ok", nil];
-//    [lobjAlertView show];
+    /*
+    UIAlertView* lobjAlertView = [[UIAlertView alloc] initWithTitle:@"Did Exit Region"
+                                                            message:@"Did Exit region"
+                                                           delegate:nil cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"Ok", nil];
+    [lobjAlertView show];
+    */
     
     NSPredicate* lobjPredicate = [NSPredicate predicateWithFormat:@"strIdentifier == %@", region.identifier];
     

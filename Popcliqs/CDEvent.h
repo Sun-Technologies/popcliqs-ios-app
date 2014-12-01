@@ -12,7 +12,7 @@
 
 #define EVENT_IDENTIFIER_KEY_STR                    @"Identifier"
 #define EVENT_TIME_INTERVAL_TWO_HOURS               7200
-#define EVENT_TIME_INTERVAL_FIFTEEN_MINUTES         7200
+#define EVENT_TIME_INTERVAL_FIFTEEN_MINUTES         900
 
 typedef enum
 {

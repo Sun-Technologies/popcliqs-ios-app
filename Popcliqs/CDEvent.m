@@ -47,9 +47,17 @@
 
 - (NSDate*)dateFromString:(NSString*)lstrDateString
 {
+    NSLog(@"Time Str = %@",lstrDateString);
+    NSLog(@"system time zone = %@",[NSTimeZone systemTimeZone]);
+    
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+
     [dateFormat setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
     NSDate *lobjDate = [dateFormat dateFromString:lstrDateString];
+    
+    NSLog(@"date from string = %@",lobjDate);
+    NSLog(@"string from date = %@",[dateFormat stringFromDate:lobjDate]);
+
     return lobjDate;
 }
 
@@ -187,7 +195,11 @@
 {
     if (self.objStartDate && self.strIdentifier)
     {
+        NSLog(@"Event start time = %@",self.objStartDate);
+        
         NSDate* lobjFireDate = [self.objStartDate dateByAddingTimeInterval:-1 * lfloatSecondsPriorToEvent];
+        
+         NSLog(@"Event fire time = %@",lobjFireDate);
         
         if ([lobjFireDate compare:[NSDate date]] == NSOrderedDescending)
         {
@@ -195,7 +207,7 @@
             
             UILocalNotification* lobjLocalNotification = [[UILocalNotification alloc] init];
             lobjLocalNotification.fireDate = lobjFireDate;
-            lobjLocalNotification.alertBody = @"You have an event to check-in";
+            lobjLocalNotification.alertBody = [NSString stringWithFormat:@"You have an event to check-in in  %1.0f minutes",(lfloatSecondsPriorToEvent/60)];// @"You have an event to check-in in  %f minutes " , lfloatSecondsPriorToEvent/60 ;
             lobjLocalNotification.userInfo = @{EVENT_IDENTIFIER_KEY_STR:self.strIdentifier};
             
             [[UIApplication sharedApplication] scheduleLocalNotification:lobjLocalNotification];
@@ -243,7 +255,7 @@
  
     // Increase GeoFence radius to avoid flicker on radius
     
-    [self geoFenceWithRadius:GEO_ALERT_TRIGGER_INCREASED_RADIUS];
+    [self geoFenceWithRadius:GEO_ALERT_TRIGGER_RADIUS];
 }
 
 - (void)exitedGeoRegion
