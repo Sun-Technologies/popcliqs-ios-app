@@ -195,18 +195,18 @@
                     // Present an alert to checkin
                     UILocalNotification* lobjLocalNotification = [[UILocalNotification alloc] init];
                     lobjLocalNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:60];
-                    lobjLocalNotification.alertBody = [NSString stringWithFormat:@"You are close to the event %@", lobjEvent.strTitle];
+                    lobjLocalNotification.alertBody = [NSString stringWithFormat:@"You are at the Cliq location or close to it. Please check in if you will be part of it. %@", lobjEvent.strTitle];
                     lobjLocalNotification.soundName = UILocalNotificationDefaultSoundName;
 //                    lobjLocalNotification.applicationIconBadgeNumber = 1;
                     [[UIApplication sharedApplication] scheduleLocalNotification:lobjLocalNotification];
                     
                     // Schedule a reminder 15 minutes prior to event
-                    [lobjEvent scheduleReminderBeforeSeconds:EVENT_TIME_INTERVAL_FIFTEEN_MINUTES];
+                    [lobjEvent scheduleReminderBeforeSeconds:EVENT_TIME_INTERVAL_FIFTEEN_MINUTES andEventName:lobjEvent.strTitle];
                 }
                 else
                 {
                     // Schedule a reminder 15 minutes prior to event
-                    [lobjEvent scheduleReminderBeforeSeconds:EVENT_TIME_INTERVAL_FIFTEEN_MINUTES];
+                    [lobjEvent scheduleReminderBeforeSeconds:EVENT_TIME_INTERVAL_FIFTEEN_MINUTES andEventName: lobjEvent.strTitle];
                 }
             }
             else
@@ -479,7 +479,7 @@
                             SLog(@"Check-In Time : %@", lobjEvent.objCheckInStartTime);
                             
                             [lobjEvent updateState];
-                            [lobjEvent scheduleReminderBeforeSeconds:EVENT_TIME_INTERVAL_TWO_HOURS];
+                            [lobjEvent scheduleReminderBeforeSeconds:EVENT_TIME_INTERVAL_TWO_HOURS andEventName:lobjEvent.strTitle];
                         }
                         
                         NSError* lobjError = nil;

@@ -64,7 +64,7 @@ typedef enum
 
 - (void)cancel;
 
-- (void)scheduleReminderBeforeSeconds:(float)lfloatSecondsPriorToEvent;
+- (void)scheduleReminderBeforeSeconds:(float)lfloatSecondsPriorToEvent andEventName:(NSString *) eventName;
 
 - (BOOL)snooze;
 - (BOOL)removeReminderIfAny;

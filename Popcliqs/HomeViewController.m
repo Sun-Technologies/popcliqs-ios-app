@@ -34,7 +34,7 @@
     {
         if (self.storyboard)
         {
-            UINavigationController* lobjLoginNC = [self.storyboard instantiateViewControllerWithIdentifier:@"LogInViewControllerNavigationStack"];
+            UINavigationController* lobjLoginNC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
             
             [self presentViewController:lobjLoginNC
                                animated:YES
@@ -66,6 +66,12 @@
 - (IBAction)eventsButtonPressed:(UIButton*)sender
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[PopcliqsAPI eventsURL]]];
+}
+
+- (IBAction)howitworksButtonPressed:(UIButton *)sender{
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [PopcliqsAPI howitWorksURL]]];
+
 }
 
 - (IBAction)logoutButtonPressed:(UIButton*)sender
@@ -115,6 +121,7 @@
         [self.arrayConnections addObject:lobjConnection];
     }
 }
+
 
 //---------------------------------------------------------------------------------
 #pragma mark - ConnectionDelegates

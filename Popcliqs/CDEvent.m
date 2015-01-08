@@ -191,7 +191,7 @@
     return lbRemovedReminder;
 }
 
-- (void)scheduleReminderBeforeSeconds:(float)lfloatSecondsPriorToEvent
+- (void)scheduleReminderBeforeSeconds:(float)lfloatSecondsPriorToEvent andEventName:(NSString *) eventName
 {
     if (self.objStartDate && self.strIdentifier)
     {
@@ -207,7 +207,14 @@
             
             UILocalNotification* lobjLocalNotification = [[UILocalNotification alloc] init];
             lobjLocalNotification.fireDate = lobjFireDate;
-            lobjLocalNotification.alertBody = [NSString stringWithFormat:@"You have an event to check-in in  %1.0f minutes",(lfloatSecondsPriorToEvent/60)];// @"You have an event to check-in in  %f minutes " , lfloatSecondsPriorToEvent/60 ;
+            
+            if( lfloatSecondsPriorToEvent == EVENT_TIME_INTERVAL_TWO_HOURS ){
+                 lobjLocalNotification.alertBody = [NSString stringWithFormat:@" You are a couple of hours away from your Cliq \nCliq Name: %@ " , eventName ];
+            }else if ( lfloatSecondsPriorToEvent == EVENT_TIME_INTERVAL_FIFTEEN_MINUTES  ){
+                lobjLocalNotification.alertBody = [NSString stringWithFormat:@" You may check in to the following Cliq in %1.0f  minutes if you will be part of itr Cliq \nCliq Name: %@ " , lfloatSecondsPriorToEvent/60 , eventName ];
+            }else{
+                lobjLocalNotification.alertBody = [NSString stringWithFormat:@"You have an event to check-in in  %1.0f minutes",(lfloatSecondsPriorToEvent/60)];// @"You have an event to check-in in  %f minutes " , lfloatSecondsPriorToEvent/60 ;
+            }
             lobjLocalNotification.userInfo = @{EVENT_IDENTIFIER_KEY_STR:self.strIdentifier};
             
             [[UIApplication sharedApplication] scheduleLocalNotification:lobjLocalNotification];
@@ -255,7 +262,7 @@
  
     // Increase GeoFence radius to avoid flicker on radius
     
-    [self geoFenceWithRadius:GEO_ALERT_TRIGGER_RADIUS];
+    [self geoFenceWithRadius:GEO_ALERT_TRIGGER_INCREASED_RADIUS];
 }
 
 - (void)exitedGeoRegion

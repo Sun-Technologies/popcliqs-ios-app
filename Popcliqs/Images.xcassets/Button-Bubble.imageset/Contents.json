@@ -3,12 +3,16 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Button-Bubble.png"
+      "filename" : "bubble1st.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "Button-Bubble-Retina.png"
+      "filename" : "bubble1st-1.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

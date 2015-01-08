@@ -13,5 +13,6 @@
 - (IBAction)eventsButtonPressed:(UIButton*)sender;
 - (IBAction)logoutButtonPressed:(UIButton*)sender;
 - (IBAction)dumpData:(UIButton*)sender;
+- (IBAction)howitworksButtonPressed:(UIButton *)sender;
 
 @end

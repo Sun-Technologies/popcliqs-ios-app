@@ -44,6 +44,7 @@
 + (NSString*)forgotPasswordURL;
 + (NSString*)signUpURL;
 + (NSString*)eventsURL;
++ (NSString*)howitWorksURL;
 + (NSString*)logInURLForUsername:(NSString*)lstrUserName password:(NSString*)lstrPassword;
 + (NSString*)userActionURLForEventId:(NSString*)lstrEventId actionId:(NSString*)lstrActionId;
 + (NSString*)checkInEventsURL;

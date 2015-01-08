@@ -81,6 +81,12 @@
     return @"http://popcliqs.com/beta/";
 }
 
++ (NSString*)howitWorksURL
+{
+    return @"http://popcliqs.com/beta/about.php";
+}
+
+
 + (NSString*)logInURLForUsername:(NSString*)lstrUserName password:(NSString*)lstrPassword
 {
     NSString* lstrLoginURL = nil;

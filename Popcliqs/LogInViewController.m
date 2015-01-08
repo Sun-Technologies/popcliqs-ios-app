@@ -65,6 +65,12 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[PopcliqsAPI signUpURL]]];
 }
 
+- (IBAction)howitworksButtonPressed:(UIButton *)sender{
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [PopcliqsAPI howitWorksURL]]];    
+}
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"LogInToHowItWorks"])

@@ -18,6 +18,8 @@
 
 - (IBAction)forgotPasswordButtonPressed:(UIButton*)lobjButton;
 - (IBAction)signUpButtonPressed:(UIButton*)lobjButton;
+- (IBAction)howitworksButtonPressed:(UIButton *)sender;
+
 
 - (IBAction)clearPreviousData;
 - (IBAction)addNewData;

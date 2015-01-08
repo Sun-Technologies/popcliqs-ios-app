@@ -475,7 +475,7 @@
                             SLog(@"Check-In Time : %@", lobjEvent.objCheckInStartTime);
                             
                             [lobjEvent updateState];
-                            [lobjEvent scheduleReminderBeforeSeconds:EVENT_TIME_INTERVAL_TWO_HOURS];
+                            [lobjEvent scheduleReminderBeforeSeconds:EVENT_TIME_INTERVAL_TWO_HOURS  andEventName: lobjEvent.strTitle];
                         }
                         
                         NSError* lobjError = nil;
